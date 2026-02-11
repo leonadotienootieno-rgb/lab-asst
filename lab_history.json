@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-02-07T12:00:00",
+    "module": "Test",
+    "summary": "unit test entry",
+    "details": {
+      "x": 1
+    },
+    "status": "completed"
+  },
+  {
+    "timestamp": "2026-02-08T13:51:27.546801",
+    "module": "Biochemistry - Serial Dilution",
+    "summary": "1:10 serial dilution, 5 steps, 1000uL per tube",
+    "details": {
+      "starting_concentration": 100.0,
+      "concentration_unit": "M",
+      "dilution_factor": "10",
+      "num_steps": 5,
+      "final_volume_per_tube": 1000.0,
+      "sample_volume": 100.0,
+      "diluent_volume": 900.0
+    },
+    "status": "completed"
+  }
+]
