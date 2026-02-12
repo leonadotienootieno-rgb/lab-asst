@@ -83,20 +83,21 @@ elif menu == "Microbiology & Graphs":
 
     with tab2:
         st.subheader("Interactive Growth Curve")
-        
         times = st.text_input("Time Points (comma separated)", "0, 30, 60, 90, 120, 150")
         readings = st.text_input("OD600 Readings (comma separated)", "0.05, 0.08, 0.15, 0.35, 0.65, 0.85")
         
         try:
             t_list = [float(x.strip()) for x in times.split(",")]
             r_list = [float(x.strip()) for x in readings.split(",")]
+            
             if len(t_list) == len(r_list):
-                chart_data = pd.DataFrame(r_list, index=t_list, columns=["OD600"])
-                st.line_chart(fig, use_container_width=True)
+                chart_df = pd.DataFrame({"OD600": r_list}, index=t_list)
+                st.line_chart(chart_df) # This is the native, error-free graph!
+                st.caption("X-Axis: Time (mins) | Y-Axis: OD600")
             else:
-                st.error("Time and Readings must have same count!")
+                st.warning("⚠️ Error: You have a different number of Time points vs OD600 readings.")
         except:
-            st.warning("Enter numerical values separated by commas.")
+            st.info("💡 Enter your numbers above to see the graph appear automatically.")
 
 # --- 4. TISSUE CULTURE ---
 elif menu == "Tissue Culture":
