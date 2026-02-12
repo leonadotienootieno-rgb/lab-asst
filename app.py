@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import math
 import time
-import plotly.express as px
+# import plotly.express as px
 from datetime import datetime
 
 # --- PAGE CONFIG ---
@@ -91,9 +91,8 @@ elif menu == "Microbiology & Graphs":
             t_list = [float(x.strip()) for x in times.split(",")]
             r_list = [float(x.strip()) for x in readings.split(",")]
             if len(t_list) == len(r_list):
-                df_growth = pd.DataFrame({"Time (min)": t_list, "OD600": r_list})
-                fig = px.line(df_growth, x="Time (min)", y="OD600", markers=True, title="Bacterial Growth Profile")
-                st.plotly_chart(fig, use_container_width=True)
+                chart_data = pd.DataFrame(r_list, index=t_list, columns=["OD600"])
+                st.line_chart(fig, use_container_width=True)
             else:
                 st.error("Time and Readings must have same count!")
         except:
